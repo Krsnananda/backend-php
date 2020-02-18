@@ -43,15 +43,6 @@
             return 'Novo saldo:' . $accountNumber->balance;
         }
 
-        public function deposit($accountNumber, $value)
-        {
-            if (!is_numeric($value)|| $value < 0) {
-                return "Valor incorreto!";
-            }
-            $accountNumber->balance = $accountNumber->balance + $value; 
-            return $accountNumber->balance;
-        }
-
         public function transference($accountNumber, $value, $accountNumberTransference)
         {
             if (!is_numeric($value)) {
@@ -65,5 +56,14 @@
             $accountNumber->balance = $accountNumber->balance - $value;
             $accountNumberTransference->balance = $accountNumberTransference->balance + $value;
             return "Transferência realizada com sucesso!";
+        }
+
+        public function deposit($accountNumber, $value)
+        {
+            if (!is_numeric($value)|| $value < 0) {
+                return "Valor incorreto!";
+            }
+            $accountNumber->balance = $accountNumber->balance + $value; 
+            return $accountNumber->balance;
         }
     }
